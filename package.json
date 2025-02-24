@@ -1,5 +1,5 @@
 {
-  "name": "use-hooks",
+  "name": "@st-tats/use-hooks",
   "version": "1.0.0",
   "main": "dist/index.js",
   "repository": {
