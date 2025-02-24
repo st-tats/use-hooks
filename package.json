@@ -1,0 +1,40 @@
+{
+  "name": "use-hooks",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/st-tats/use-hooks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/st-tats/use-hooks/issues"
+  },
+  "homepage": "https://github.com/st-tats/use-hooks#readme",
+  "description": "A custom React hooks library",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.10",
+    "tsup": "^7.2.0",
+    "typescript": "^5.7.3",
+    "vitest": "^1.6.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
