@@ -1,7 +1,7 @@
 /**
  * フォーマットされた時刻文字列を小数形式の時刻に変換する関数
  *
- * @param formattedTime - フォーマットされた時刻文字列（例: "01:30 PM", "10:30"）
+ * @param formattedTime - フォーマットされた時刻文字列（例: "01:30 PM", "10:30"）。`null` または `undefined` の場合は `null` を返す。
  * @param format - フォーマット文字列（例: "HH:mm", "hh:mm A"）。デフォルトは "HH:mm"。
  * @returns 小数形式の時刻（例: 13.5, 10.5）。無効な入力の場合は `null`。
  *
@@ -15,12 +15,19 @@
  *
  * const decimalTime3 = parseFormattedTime("invalid", "HH:mm");
  * console.log(decimalTime3); // null
+ *
+ * const decimalTime4 = parseFormattedTime(null, "HH:mm");
+ * console.log(decimalTime4); // null
  * ```
  */
 export function parseFormattedTime(
-  formattedTime: string,
+  formattedTime: string | null | undefined,
   format: string = "HH:mm"
 ): number | null {
+  if (formattedTime == null) {
+    return null; // null または undefined の場合
+  }
+
   const timeRegex = /(\d{1,2}):(\d{2})\s?(AM|PM)?/i;
   const match = formattedTime.match(timeRegex);
 

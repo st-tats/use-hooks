@@ -12,6 +12,6 @@ import { filterNumbers } from "./filter-numbers";
  */
 export function minNumber(arr: (string | number)[]): number | null {
   const numbers = filterNumbers(arr);
-  if (numbers.length === 0) return null; // 配列が空の場合はnullを返す
+  if (!numbers || numbers.length === 0) return null; // 配列が空の場合はnullを返す
   return Math.min(...numbers);
 }

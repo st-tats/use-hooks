@@ -1,7 +1,7 @@
 /**
  * 小数形式の時刻を指定されたフォーマットに変換する関数（12時間形式対応）
  *
- * @param time - 小数形式の時刻（例: 10.5, "10.5", 12.75, "12.75"）
+ * @param time - 小数形式の時刻（例: 10.5, "10.5", 12.75, "12.75"）。`null` または `undefined` の場合は `null` を返す。
  * @param format - フォーマット文字列（例: "HH:mm", "hh:mm A"）。デフォルトは "HH:mm"。
  * @returns フォーマットされた時刻文字列。無効な入力の場合は `null`。
  *
@@ -15,12 +15,19 @@
  *
  * const formattedTime3 = formatDecimalTime("invalid", "HH:mm");
  * console.log(formattedTime3); // null
+ *
+ * const formattedTime4 = formatDecimalTime(null, "HH:mm");
+ * console.log(formformattedTime4); // null
  * ```
  */
 export function formatDecimalTime(
-  time: number | string,
+  time: number | string | null | undefined,
   format: string = "HH:mm"
 ): string | null {
+  if (time == null) {
+    return null; // null または undefined の場合
+  }
+
   // 文字列が渡された場合は数値に変換
   const numericTime = typeof time === "string" ? parseFloat(time) : time;
 

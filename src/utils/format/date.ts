@@ -1,7 +1,7 @@
 /**
  * カスタムフォーマットで日付をフォーマットする関数
  *
- * @param date - フォーマット対象の日付（Dateオブジェクト、文字列、またはタイムスタンプ）
+ * @param date - フォーマット対象の日付（Dateオブジェクト、文字列、またはタイムスタンプ）。`null` または `undefined` の場合は `null` を返す。
  * @param format - フォーマット文字列（例: "YYYY年MM月dd日(ddd)"）。デフォルトは "YYYY年MM月dd日(ddd)"。
  * @param timeZone - タイムゾーン（例: "Asia/Tokyo"）。空の場合は "Asia/Tokyo" を使用。
  * @returns フォーマットされた日付文字列。無効な日付の場合は `null` を返す。
@@ -13,15 +13,18 @@
  *
  * const formattedDateTime = formatDate(new Date(), "YYYY年MM月dd日(ddd) HH:mm:ss", "UTC");
  * console.log(formattedDateTime); // "2023年10月05日(木) 14:30:45"
+ *
+ * const formattedDateNull = formatDate(null, "YYYY年MM月dd日(ddd)");
+ * console.log(formattedDateNull); // null
  * ```
  */
 export function formatDate(
-  date: Date | string | number,
+  date: Date | string | number | null | undefined,
   format: string = "YYYY年MM月dd日(ddd)",
   timeZone: string = "Asia/Tokyo"
 ): string | null {
   // 無効な日付の場合は null を返す
-  if (!date) {
+  if (date == null) {
     return null;
   }
 

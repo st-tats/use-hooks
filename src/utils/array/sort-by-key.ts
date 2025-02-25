@@ -22,10 +22,14 @@
  * ```
  */
 export function sortByKey<T extends Record<string, any>>(
-  array: T[],
+  array: T[] | null | undefined,
   key: keyof T,
   order: "asc" | "desc" = "asc"
-): T[] {
+): T[] | null {
+  if (array == null) {
+    return null;
+  }
+
   return array.slice().sort((a, b) => {
     // ソート対象のキーの値を取得
     const valueA = a[key];

@@ -19,10 +19,14 @@
  * ```
  */
 export function sortByNestedKey<T extends Record<string, any>>(
-  array: T[],
+  array: T[] | null | undefined,
   keyPath: string,
   order: "asc" | "desc" = "asc"
-): T[] {
+): T[] | null {
+  if (array == null) {
+    return null;
+  }
+
   return array.slice().sort((a, b) => {
     // ネストされたキーの値を取得
     const valueA = keyPath.split(".").reduce((obj, key) => obj[key], a);

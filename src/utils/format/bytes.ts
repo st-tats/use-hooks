@@ -1,11 +1,11 @@
 /**
  * バイト数を適切な単位にフォーマットする関数
  *
- * @param bytes - フォーマット対象のバイト数
+ * @param bytes - フォーマット対象のバイト数。`null` または `undefined` の場合は `null` を返す。
  * @param opts - オプション
  * @param opts.decimals - 小数点以下の桁数。デフォルトは 0。
  * @param opts.sizeType - 単位のタイプ。'accurate' または 'normal'。デフォルトは 'normal'。
- * @returns フォーマットされた文字列（例: "1.23 MB"）
+ * @returns フォーマットされた文字列（例: "1.23 MB"）。無効な入力の場合は `null`。
  *
  * @example
  * ```typescript
@@ -17,15 +17,22 @@
  *
  * const formattedBytesWithDecimals = formatBytes(123456, { decimals: 2 });
  * console.log(formattedBytesWithDecimals); // "120.56 KB"
+ *
+ * const formattedBytesNull = formatBytes(null);
+ * console.log(formattedBytesNull); // null
  * ```
  */
 export function formatBytes(
-  bytes: number,
+  bytes: number | null | undefined,
   opts: {
     decimals?: number;
     sizeType?: "accurate" | "normal";
   } = {}
-): string {
+): string | null {
+  if (bytes == null) {
+    return null; // null または undefined の場合
+  }
+
   // オプションのデフォルト値を設定
   const { decimals = 0, sizeType = "normal" } = opts;
 
