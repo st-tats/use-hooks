@@ -1,26 +1,27 @@
 {
   "name": "@st-tats/use-hooks",
   "version": "1.0.4",
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/st-tats/use-hooks#readme",
+  "description": "A custom React hooks library",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/st-tats/use-hooks.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/st-tats/use-hooks/issues"
   },
-  "homepage": "https://github.com/st-tats/use-hooks#readme",
-  "description": "A custom React hooks library",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",
     "clean": "rm -rf dist",
     "prepare": "npm run build",
-    "test": "vitest"
+    "test": "vitest",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "react": "^19.0.0"
